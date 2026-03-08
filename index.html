@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Schröpfmaster — Markt & Strategieanalyse 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f0f0f;
+    --ink-soft: #3a3a3a;
+    --ink-muted: #888;
+    --paper: #faf9f7;
+    --paper-warm: #f3f1ec;
+    --paper-card: #ffffff;
+    --accent: #c8a96e;
+    --accent-deep: #a8843e;
+    --accent-pale: #f5edd8;
+    --teal: #2d6a6a;
+    --teal-light: #e8f4f4;
+    --red: #c0392b;
+    --green: #27635a;
+    --green-light: #e8f5f2;
+    --border: rgba(0,0,0,0.08);
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.07), 0 2px 6px rgba(0,0,0,0.04);
+    --shadow-lg: 0 20px 60px rgba(0,0,0,0.09), 0 4px 16px rgba(0,0,0,0.06);
+    --radius: 16px;
+    --radius-sm: 8px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(250,249,247,0.88);
+    backdrop-filter: blur(20px) saturate(1.4);
+    border-bottom: 1px solid var(--border);
+    padding: 0 48px;
+    height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: all 0.3s ease;
+  }
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700; font-size: 1.1rem;
+    color: var(--ink); letter-spacing: -0.01em;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .nav-brand-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent); display: inline-block;
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 0.82rem; font-weight: 500; color: var(--ink-soft);
+    text-decoration: none; letter-spacing: 0.03em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    background: var(--ink); color: #fff;
+    border: none; padding: 9px 20px; border-radius: 100px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 500;
+    cursor: pointer; transition: all 0.2s; letter-spacing: 0.02em;
+  }
+  .nav-cta:hover { background: var(--accent-deep); transform: translateY(-1px); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    padding: 140px 48px 100px;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; top: 0; right: -10%; width: 55%; height: 100%;
+    background: linear-gradient(135deg, var(--accent-pale) 0%, #ede8df 60%, transparent 100%);
+    z-index: 0; border-radius: 0 0 0 60%;
+    opacity: 0.5;
+  }
+  .hero-grid-line {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      linear-gradient(rgba(0,0,0,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,0,0,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+    z-index: 0;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 720px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent-pale); border: 1px solid rgba(200,169,110,0.3);
+    border-radius: 100px; padding: 6px 16px;
+    font-size: 0.78rem; font-weight: 500; color: var(--accent-deep);
+    letter-spacing: 0.06em; text-transform: uppercase;
+    margin-bottom: 32px;
+    animation: fadeSlideUp 0.6s ease both;
+  }
+  .hero-badge-dot {
+    width: 6px; height: 6px; background: var(--accent); border-radius: 50%;
+    animation: pulse 2s ease infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 700; line-height: 1.08; letter-spacing: -0.025em;
+    color: var(--ink);
+    animation: fadeSlideUp 0.7s 0.1s ease both;
+  }
+  h1 em { font-style: italic; color: var(--teal); }
+  .hero-sub {
+    font-size: 1.15rem; color: var(--ink-soft); font-weight: 300;
+    max-width: 560px; line-height: 1.7; margin-top: 24px;
+    animation: fadeSlideUp 0.7s 0.2s ease both;
+  }
+  .hero-stats {
+    display: flex; gap: 48px; margin-top: 56px;
+    animation: fadeSlideUp 0.7s 0.3s ease both;
+  }
+  .hero-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem; font-weight: 700; line-height: 1;
+    color: var(--ink); letter-spacing: -0.03em;
+  }
+  .hero-stat-num span { color: var(--accent); }
+  .hero-stat-label {
+    font-size: 0.78rem; color: var(--ink-muted); font-weight: 500;
+    letter-spacing: 0.04em; text-transform: uppercase; margin-top: 6px;
+  }
+  .hero-actions {
+    display: flex; gap: 16px; margin-top: 48px;
+    animation: fadeSlideUp 0.7s 0.4s ease both;
+  }
+  .btn-primary {
+    background: var(--ink); color: #fff;
+    border: none; padding: 14px 28px; border-radius: 100px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .btn-primary:hover { background: var(--teal); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .btn-ghost {
+    background: transparent; color: var(--ink);
+    border: 1.5px solid var(--border); padding: 14px 28px; border-radius: 100px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--ink); background: var(--paper-warm); }
+
+  @keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── SECTION COMMON ─── */
+  section { padding: 100px 48px; max-width: 1280px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.72rem; font-weight: 600; color: var(--accent-deep);
+    letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::after {
+    content: ''; display: block; height: 1px; width: 40px;
+    background: var(--accent);
+  }
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700; letter-spacing: -0.02em;
+    line-height: 1.15; margin-bottom: 16px;
+  }
+  .section-intro {
+    font-size: 1.05rem; color: var(--ink-soft); max-width: 600px;
+    font-weight: 300; line-height: 1.75;
+  }
+  .divider {
+    border: none; border-top: 1px solid var(--border);
+    margin: 0; width: 100%;
+  }
+
+  /* ─── KEY METRICS TICKER ─── */
+  .metrics-bar {
+    background: var(--ink); color: #fff;
+    padding: 18px 0; overflow: hidden;
+    position: relative;
+  }
+  .metrics-ticker {
+    display: flex; gap: 64px; white-space: nowrap;
+    animation: ticker 28s linear infinite;
+    width: max-content;
+  }
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .metrics-item {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 0.82rem; font-weight: 400; letter-spacing: 0.04em;
+  }
+  .metrics-item strong {
+    font-family: 'DM Mono', monospace; font-size: 1rem;
+    color: var(--accent);
+  }
+  .metrics-sep { width: 4px; height: 4px; background: rgba(255,255,255,0.2); border-radius: 50%; }
+
+  /* ─── MARKET GRID ─── */
+  .market-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px; background: var(--border);
+    border-radius: var(--radius); overflow: hidden;
+    margin-top: 56px;
+  }
+  .market-card {
+    background: var(--paper-card); padding: 40px 36px;
+    transition: background 0.2s;
+  }
+  .market-card:hover { background: var(--paper-warm); }
+  .market-card-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; margin-bottom: 24px;
+  }
+  .market-card-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6rem; font-weight: 700; color: var(--ink);
+    letter-spacing: -0.03em; line-height: 1;
+  }
+  .market-card-unit { font-size: 1rem; color: var(--ink-muted); font-weight: 400; }
+  .market-card-label {
+    font-size: 0.88rem; color: var(--ink-soft); margin-top: 8px; font-weight: 400;
+  }
+  .market-card-source {
+    font-size: 0.7rem; color: var(--ink-muted); margin-top: 16px;
+    font-family: 'DM Mono', monospace; letter-spacing: 0.02em;
+  }
+
+  /* ─── TAM FUNNEL ─── */
+  .tam-section { background: var(--paper-warm); border-radius: var(--radius); padding: 64px; margin-top: 80px; }
+  .funnel-bars { margin-top: 48px; display: flex; flex-direction: column; gap: 16px; }
+  .funnel-row { display: flex; align-items: center; gap: 24px; }
+  .funnel-label { width: 80px; font-size: 0.82rem; font-weight: 600; color: var(--ink-soft); text-align: right; }
+  .funnel-bar-wrap { flex: 1; background: var(--border); border-radius: 100px; height: 48px; overflow: hidden; position: relative; }
+  .funnel-bar {
+    height: 100%; border-radius: 100px;
+    display: flex; align-items: center; padding: 0 20px;
+    font-size: 0.88rem; font-weight: 500; color: #fff;
+    transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    white-space: nowrap; overflow: hidden;
+  }
+  .funnel-bar.tam { background: linear-gradient(90deg, var(--teal), #3d8c8c); width: 100%; }
+  .funnel-bar.sam { background: linear-gradient(90deg, var(--accent-deep), #c8a96e); width: 58%; }
+  .funnel-bar.som { background: linear-gradient(90deg, #c0392b, #e74c3c); width: 4%; }
+  .funnel-val { width: 110px; font-family: 'DM Mono', monospace; font-size: 0.85rem; color: var(--ink-soft); }
+
+  /* ─── AUDIENCE CARDS ─── */
+  .audience-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 56px;
+  }
+  .audience-card {
+    background: var(--paper-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 32px 28px;
+    transition: all 0.25s; cursor: default; position: relative; overflow: hidden;
+  }
+  .audience-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--accent); transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  .audience-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .audience-card:hover::before { transform: scaleX(1); }
+  .audience-card.priority-1::before { background: var(--teal); transform: scaleX(1); }
+  .audience-card.priority-2::before { background: var(--accent); transform: scaleX(1); }
+  .audience-card.priority-3::before { background: #7b6ea0; transform: scaleX(1); }
+  .audience-rank {
+    font-family: 'DM Mono', monospace; font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted);
+    margin-bottom: 12px;
+  }
+  .audience-title {
+    font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 600;
+    letter-spacing: -0.01em; margin-bottom: 20px;
+  }
+  .audience-meta { display: flex; flex-direction: column; gap: 10px; }
+  .audience-row { display: flex; justify-content: space-between; align-items: baseline; }
+  .audience-key { font-size: 0.78rem; color: var(--ink-muted); font-weight: 400; }
+  .audience-val { font-size: 0.88rem; color: var(--ink); font-weight: 600; font-family: 'DM Mono', monospace; }
+  .audience-motivation {
+    margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border);
+    font-size: 0.82rem; color: var(--ink-soft); line-height: 1.6; font-style: italic;
+  }
+  .priority-badge {
+    display: inline-block; padding: 4px 10px; border-radius: 100px;
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .p1 { background: var(--teal-light); color: var(--teal); }
+  .p2 { background: var(--accent-pale); color: var(--accent-deep); }
+  .p3 { background: #ede8f5; color: #7b6ea0; }
+
+  /* ─── COMPETITION TABLE ─── */
+  .comp-tabs { display: flex; gap: 4px; margin-bottom: 32px; flex-wrap: wrap; }
+  .comp-tab {
+    padding: 9px 20px; border-radius: 100px; font-size: 0.82rem; font-weight: 500;
+    border: 1.5px solid var(--border); background: transparent; color: var(--ink-soft);
+    cursor: pointer; transition: all 0.2s;
+  }
+  .comp-tab.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .comp-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  thead th {
+    background: var(--paper-warm); padding: 14px 20px; text-align: left;
+    font-size: 0.72rem; font-weight: 600; color: var(--ink-soft);
+    letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: var(--paper-warm); }
+  tbody td { padding: 14px 20px; color: var(--ink-soft); vertical-align: middle; }
+  tbody td:first-child { color: var(--ink); font-weight: 500; }
+  .price-tag {
+    font-family: 'DM Mono', monospace; font-size: 0.82rem;
+    background: var(--paper-warm); padding: 3px 8px; border-radius: 4px;
+    color: var(--ink); white-space: nowrap;
+  }
+  .highlight-row { background: rgba(200,169,110,0.06) !important; }
+  .highlight-row td:first-child { color: var(--accent-deep) !important; font-weight: 700 !important; }
+  .tag {
+    display: inline-block; padding: 2px 8px; border-radius: 4px;
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .tag-direct { background: #fde8e8; color: #c0392b; }
+  .tag-budget { background: #fff3e0; color: #e67e22; }
+  .tag-indirect { background: var(--teal-light); color: var(--teal); }
+
+  /* ─── ROI CALCULATOR ─── */
+  .roi-section {
+    background: var(--ink); color: #fff; border-radius: var(--radius);
+    padding: 72px 64px; margin-top: 80px;
+  }
+  .roi-section h2 { color: #fff; }
+  .roi-section .section-label { color: var(--accent); }
+  .roi-section .section-label::after { background: var(--accent); }
+  .roi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-top: 48px; }
+  .roi-controls { display: flex; flex-direction: column; gap: 28px; }
+  .roi-label { font-size: 0.82rem; font-weight: 500; color: rgba(255,255,255,0.5); letter-spacing: 0.04em; margin-bottom: 8px; }
+  .roi-select, .roi-input {
+    width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+    color: #fff; padding: 12px 16px; border-radius: var(--radius-sm);
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem; outline: none;
+    transition: border-color 0.2s; -webkit-appearance: none;
+  }
+  .roi-select:focus, .roi-input:focus { border-color: var(--accent); }
+  input[type="range"] {
+    -webkit-appearance: none; width: 100%; height: 4px;
+    background: rgba(255,255,255,0.12); border-radius: 2px; outline: none;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%;
+    background: var(--accent); cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  .range-labels { display: flex; justify-content: space-between; font-size: 0.72rem; color: rgba(255,255,255,0.3); margin-top: 6px; }
+  .roi-results { display: flex; flex-direction: column; gap: 24px; justify-content: center; }
+  .roi-result-card {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius); padding: 28px 32px;
+    transition: all 0.3s;
+  }
+  .roi-result-num {
+    font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 700;
+    color: var(--accent); line-height: 1; letter-spacing: -0.03em;
+    transition: all 0.3s;
+  }
+  .roi-result-label { font-size: 0.8rem; color: rgba(255,255,255,0.4); margin-top: 6px; letter-spacing: 0.04em; }
+  .roi-result-card.breakeven .roi-result-num { color: #5dd6c0; }
+
+  /* ─── SWOT ─── */
+  .swot-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+    background: var(--border); border-radius: var(--radius); overflow: hidden; margin-top: 56px;
+  }
+  .swot-cell { padding: 48px 44px; position: relative; }
+  .swot-cell.strengths { background: var(--green-light); }
+  .swot-cell.weaknesses { background: #fff8f8; }
+  .swot-cell.opportunities { background: var(--teal-light); }
+  .swot-cell.threats { background: #fff5ed; }
+  .swot-label {
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 20px; display: flex; align-items: center; gap: 8px;
+  }
+  .swot-cell.strengths .swot-label { color: var(--green); }
+  .swot-cell.weaknesses .swot-label { color: var(--red); }
+  .swot-cell.opportunities .swot-label { color: var(--teal); }
+  .swot-cell.threats .swot-label { color: #e67e22; }
+  .swot-items { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .swot-items li {
+    font-size: 0.88rem; line-height: 1.55; color: var(--ink-soft);
+    padding-left: 18px; position: relative;
+  }
+  .swot-items li::before {
+    content: '→'; position: absolute; left: 0; font-size: 0.75rem;
+    font-weight: 700; top: 1px;
+  }
+  .swot-cell.strengths li::before { color: var(--green); }
+  .swot-cell.weaknesses li::before { color: var(--red); }
+  .swot-cell.opportunities li::before { color: var(--teal); }
+  .swot-cell.threats li::before { color: #e67e22; }
+  .swot-icon { font-size: 2rem; position: absolute; top: 32px; right: 36px; opacity: 0.15; }
+
+  /* ─── STRATEGY ─── */
+  .strategy-options { display: flex; flex-direction: column; gap: 16px; margin-top: 56px; }
+  .strategy-option {
+    background: var(--paper-card); border: 1px solid var(--border);
+    border-radius: var(--radius); overflow: hidden;
+    transition: all 0.25s; cursor: pointer;
+  }
+  .strategy-option:hover { box-shadow: var(--shadow-md); }
+  .strategy-header {
+    display: flex; align-items: center; gap: 20px; padding: 24px 28px;
+    border-bottom: 1px solid transparent; transition: border-color 0.2s;
+  }
+  .strategy-option.open .strategy-header { border-color: var(--border); }
+  .strategy-rank {
+    width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center;
+    justify-content: center; font-weight: 700; font-size: 0.88rem; flex-shrink: 0;
+  }
+  .r1 { background: var(--teal-light); color: var(--teal); }
+  .r2 { background: var(--accent-pale); color: var(--accent-deep); }
+  .r3 { background: #e8e4f5; color: #7b6ea0; }
+  .r4 { background: var(--green-light); color: var(--green); }
+  .r5 { background: #e8f0fd; color: #2563eb; }
+  .strategy-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 600; flex: 1; }
+  .strategy-score { display: flex; gap: 4px; }
+  .star { font-size: 0.85rem; }
+  .strategy-chevron { font-size: 1.1rem; color: var(--ink-muted); transition: transform 0.25s; }
+  .strategy-option.open .strategy-chevron { transform: rotate(180deg); }
+  .strategy-body { display: none; padding: 0 28px 24px; }
+  .strategy-option.open .strategy-body { display: block; }
+  .strategy-pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 20px; }
+  .pc-block h4 { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+  .pro { color: var(--green); }
+  .con { color: var(--red); }
+  .pc-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .pc-list li { font-size: 0.85rem; color: var(--ink-soft); line-height: 1.5; padding-left: 16px; position: relative; }
+  .pc-list li::before { content: '·'; position: absolute; left: 0; font-size: 1.2rem; top: -2px; }
+  .pro .pc-list li::before { color: var(--green); }
+  .con .pc-list li::before { color: var(--red); }
+
+  /* ─── RECOMMENDATIONS ─── */
+  .rec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 56px; }
+  .rec-card {
+    background: var(--paper-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 36px 32px;
+    transition: all 0.25s;
+  }
+  .rec-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+  .rec-card.featured {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, var(--teal) 0%, #1a4a4a 100%);
+    color: #fff;
+  }
+  .rec-num { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--ink-muted); margin-bottom: 12px; letter-spacing: 0.08em; }
+  .rec-card.featured .rec-num { color: rgba(255,255,255,0.4); }
+  .rec-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 600; margin-bottom: 16px; }
+  .rec-card.featured .rec-title { color: #fff; }
+  .rec-body { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.7; }
+  .rec-card.featured .rec-body { color: rgba(255,255,255,0.7); }
+  .rec-metrics { display: flex; gap: 32px; margin-top: 24px; }
+  .rec-metric-val { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--accent); }
+  .rec-metric-label { font-size: 0.72rem; color: var(--ink-muted); letter-spacing: 0.04em; }
+  .rec-card.featured .rec-metric-label { color: rgba(255,255,255,0.4); }
+
+  /* ─── GLOBAL TRENDS ─── */
+  .trends-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 56px; }
+  .trend-card {
+    background: var(--paper-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 28px 24px; text-align: center;
+    transition: all 0.25s;
+  }
+  .trend-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .trend-icon { font-size: 2rem; margin-bottom: 16px; }
+  .trend-cagr {
+    font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700;
+    color: var(--teal); letter-spacing: -0.02em;
+  }
+  .trend-market { font-size: 0.8rem; color: var(--ink-muted); margin-top: 4px; }
+  .trend-name { font-size: 0.9rem; font-weight: 500; margin-top: 12px; }
+  .trend-source { font-size: 0.68rem; color: var(--ink-muted); margin-top: 8px; font-family: 'DM Mono', monospace; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--ink); color: rgba(255,255,255,0.4);
+    padding: 48px; text-align: center;
+    font-size: 0.8rem; line-height: 1.7;
+  }
+  footer strong { color: rgba(255,255,255,0.7); }
+
+  /* ─── SCROLL REVEAL ─── */
+  .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+  .reveal.in-view { opacity: 1; transform: none; }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    section { padding: 64px 24px; }
+    .hero { padding: 120px 24px 80px; }
+    .hero-stats { gap: 28px; flex-wrap: wrap; }
+    .market-grid, .audience-grid, .swot-grid, .rec-grid, .trends-grid { grid-template-columns: 1fr; }
+    .strategy-pros-cons, .roi-grid { grid-template-columns: 1fr; }
+    .tam-section { padding: 40px 28px; }
+    .roi-section { padding: 48px 28px; }
+    .swot-grid { gap: 0; }
+    .swot-cell { padding: 36px 28px; }
+    .rec-card.featured { grid-column: 1; }
+    .funnel-label { width: 50px; font-size: 0.72rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <span class="nav-brand-dot"></span>
+    Schröpfmaster Analyse
+  </div>
+  <ul class="nav-links">
+    <li><a href="#markt">Markt</a></li>
+    <li><a href="#zielgruppen">Zielgruppen</a></li>
+    <li><a href="#wettbewerb">Wettbewerb</a></li>
+    <li><a href="#roi">ROI</a></li>
+    <li><a href="#strategie">Strategie</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('strategie').scrollIntoView({behavior:'smooth'})">
+    Strategie ↓
+  </button>
+</nav>
+
+<!-- HERO -->
+<div class="hero" style="max-width:100%;">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-line"></div>
+  <div class="hero-content" style="margin: 0 auto; padding: 0 48px; max-width: 1280px; width: 100%;">
+    <div class="hero-badge"><span class="hero-badge-dot"></span>Markt- & Strategieanalyse 2026</div>
+    <h1>Schröpfmaster<br><em>trifft einen</em><br>wachsenden Markt</h1>
+    <p class="hero-sub">Umfassende Markt-, Wettbewerbs- und Strategieanalyse für das professionelle Therapiegerät — DACH-Raum und globale Trends.</p>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">15<span>%</span></div>
+        <div class="hero-stat-label">CAGR Elektrisches Schröpfen</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">172<span>k</span></div>
+        <div class="hero-stat-label">Potenzielle Käufer DACH</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">30<span>M€</span></div>
+        <div class="hero-stat-label">SOM DACH (optimistisch)</div>
+      </div>
+    </div>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="document.getElementById('markt').scrollIntoView({behavior:'smooth'})">Analyse lesen</button>
+      <button class="btn-ghost" onclick="document.getElementById('roi').scrollIntoView({behavior:'smooth'})">ROI berechnen</button>
+    </div>
+  </div>
+</div>
+
+<!-- METRICS TICKER -->
+<div class="metrics-bar">
+  <div class="metrics-ticker" id="ticker">
+    <div class="metrics-item"><strong>6,8 Bio. USD</strong> Global Wellness Economy 2024 (GWI)</div>
+    <div class="metrics-sep"></div>
+    <div class="metrics-item"><strong>~16.000</strong> Physiotherapeuten in Österreich (GÖG 2023)</div>
+    <div class="metrics-sep"></div>
+    <div class="metrics-item"><strong>50.333</strong> Physiotherapie-Betriebsstätten in Deutschland (BGW 2024)</div>
+    <div class="metrics-sep"></div>
+    <div class="metrics-item"><strong>82,8 %</strong> der deutschen Praxen bieten Selbstzahler-Leistungen (Eckdatenstudie 2024)</div>
+    <div class="metrics-sep"></div>
+    <div class="metrics-item"><strong>10,5 Mrd. USD</strong> Sport Recovery Technologiemarkt bis 2033</div>
+    <div class="metrics-sep"></div>
+    <div class="metrics-item"><strong>23.000</strong> Massagebetriebe in Österreich (WKO 2024/2025)</div>
+    <div class="metrics-sep"></div>
+    <div class="metrics-item"><strong>13–16 %</strong> CAGR Medical Spa Markt global</div>
+    <div class="metrics-sep"></div>
+    <div class="metrics-item"><strong>47.000</strong> praktizierende Heilpraktiker in Deutschland (BDH)</div>
+    <div class="metrics-sep"></div>
+    <!-- Repeat for seamless loop -->
+    <div class="metrics-item"><strong>6,8 Bio. USD</strong> Global Wellness Economy 2024 (GWI)</div>
+    <div class="metrics-sep"></div>
+    <div class="metrics-item"><strong>~16.000</strong> Physiotherapeuten in Österreich (GÖG 2023)</div>
+    <div class="metrics-sep"></div>
+    <div class="metrics-item"><strong>50.333</strong> Physiotherapie-Betriebsstätten in Deutschland (BGW 2024)</div>
+    <div class="metrics-sep"></div>
+    <div class="metrics-item"><strong>82,8 %</strong> der deutschen Praxen bieten Selbstzahler-Leistungen (Eckdatenstudie 2024)</div>
+    <div class="metrics-sep"></div>
+    <div class="metrics-item"><strong>10,5 Mrd. USD</strong> Sport Recovery Technologiemarkt bis 2033</div>
+    <div class="metrics-sep"></div>
+    <div class="metrics-item"><strong>23.000</strong> Massagebetriebe in Österreich (WKO 2024/2025)</div>
+    <div class="metrics-sep"></div>
+    <div class="metrics-item"><strong>13–16 %</strong> CAGR Medical Spa Markt global</div>
+    <div class="metrics-sep"></div>
+    <div class="metrics-item"><strong>47.000</strong> praktizierende Heilpraktiker in Deutschland (BDH)</div>
+  </div>
+</div>
+
+<!-- 1. MARKTANALYSE -->
+<section id="markt">
+  <div class="section-label reveal">01 — Marktanalyse</div>
+  <h2 class="reveal">Der österreichische<br>Primärmarkt im Detail</h2>
+  <p class="section-intro reveal reveal-delay-1">Österreich bietet mit 17.300–21.000 hochrelevanten Betrieben eine dichte Ausgangsbasis. WKO-Daten zeigen eine Vervierfachung der Massagebetriebe seit 2002 — der Markt wächst strukturell.</p>
+
+  <div class="market-grid reveal">
+    <div class="market-card">
+      <div class="market-card-icon" style="background:#e8f4f4;">🧘</div>
+      <div class="market-card-num">~16.000 <span class="market-card-unit"></span></div>
+      <div class="market-card-label">Physiotherapeuten (registriert)</div>
+      <div class="market-card-source">Quelle: GÖG MTD-Prognose 2023 / Physio Austria</div>
+    </div>
+    <div class="market-card">
+      <div class="market-card-icon" style="background:#f5edd8;">🏥</div>
+      <div class="market-card-num">4.000–5.000</div>
+      <div class="market-card-label">Physiotherapiepraxen (freiberuflich)</div>
+      <div class="market-card-source">Quelle: Physio Austria, WKO 2024</div>
+    </div>
+    <div class="market-card">
+      <div class="market-card-icon" style="background:#f5edd8;">💆</div>
+      <div class="market-card-num">~2.970</div>
+      <div class="market-card-label">Heilmasseure (selbstständig, Österreich)</div>
+      <div class="market-card-source">Quelle: WKO Fachgruppe Massage 2024</div>
+    </div>
+    <div class="market-card">
+      <div class="market-card-icon" style="background:#e8f4f4;">🏨</div>
+      <div class="market-card-num">800–1.000</div>
+      <div class="market-card-label">Wellness-/Spa-Hotels in Österreich</div>
+      <div class="market-card-source">Quelle: wellness-hotel.info, Statistik Austria</div>
+    </div>
+    <div class="market-card">
+      <div class="market-card-icon" style="background:#fde8e8;">🏋️</div>
+      <div class="market-card-num">150–300</div>
+      <div class="market-card-label">Sporttherapiezentren</div>
+      <div class="market-card-source">Quelle: Branchenschätzung, OESG 2024</div>
+    </div>
+    <div class="market-card">
+      <div class="market-card-icon" style="background:#e8f0fd;">💅</div>
+      <div class="market-card-num">~3.400</div>
+      <div class="market-card-label">Kosmetikstudios in Österreich</div>
+      <div class="market-card-source">Quelle: WKO Fußpflege & Kosmetik 2024</div>
+    </div>
+  </div>
+
+  <!-- Preise -->
+  <div style="margin-top:64px;" class="reveal">
+    <div class="section-label">Behandlungspreise Österreich</div>
+    <div class="comp-table-wrap" style="margin-top: 24px;">
+      <table>
+        <thead>
+          <tr>
+            <th>Behandlung</th>
+            <th>Preis</th>
+            <th>Dauer</th>
+            <th>Zielkunde</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight-row">
+            <td>Schröpfmassage (Gerät)</td>
+            <td><span class="price-tag">55–120 €</span></td>
+            <td>20–45 min</td>
+            <td>Selbstzahler</td>
+          </tr>
+          <tr>
+            <td>Physiotherapie (Wahlpraxis)</td>
+            <td><span class="price-tag">80–120 €</span></td>
+            <td>45–60 min</td>
+            <td>Selbstzahler / ÖGK-Rückerstattung</td>
+          </tr>
+          <tr>
+            <td>Klassische Massage (privat)</td>
+            <td><span class="price-tag">55–80 €</span></td>
+            <td>50–60 min</td>
+            <td>Selbstzahler</td>
+          </tr>
+          <tr>
+            <td>Osteopathie</td>
+            <td><span class="price-tag">57–120 €</span></td>
+            <td>30–60 min</td>
+            <td>Selbstzahler</td>
+          </tr>
+          <tr>
+            <td>Spa-Schröpfbehandlung (Hotel)</td>
+            <td><span class="price-tag">80–150 €</span></td>
+            <td>30–60 min</td>
+            <td>Hotel-Gäste (Selbstzahler)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- TAM Funnel -->
+  <div class="tam-section reveal">
+    <div class="section-label">Marktpotenzial Österreich</div>
+    <h2 style="font-size: 2rem;">TAM · SAM · SOM</h2>
+    <p style="font-size: 0.9rem; color: var(--ink-soft); margin-top: 8px;">Realistisches Marktpotenzial für ein Therapiegerät bei ~5.000 €</p>
+    <div class="funnel-bars">
+      <div class="funnel-row">
+        <div class="funnel-label">TAM</div>
+        <div class="funnel-bar-wrap">
+          <div class="funnel-bar tam">Alle potenziellen Käufer × 5.000 €</div>
+        </div>
+        <div class="funnel-val">86–105 Mio. €</div>
+      </div>
+      <div class="funnel-row">
+        <div class="funnel-label">SAM</div>
+        <div class="funnel-bar-wrap">
+          <div class="funnel-bar sam">Hohe Relevanz: Physio, Heilmasseure, Sport</div>
+        </div>
+        <div class="funnel-val">40–50 Mio. €</div>
+      </div>
+      <div class="funnel-row">
+        <div class="funnel-label">SOM</div>
+        <div class="funnel-bar-wrap">
+          <div class="funnel-bar som">3 J.</div>
+        </div>
+        <div class="funnel-val">1,65–3,58 Mio. €</div>
+      </div>
+    </div>
+    <p style="margin-top: 24px; font-size: 0.78rem; color: var(--ink-muted);">SOM-Berechnung basiert auf konservativen Early-Adopter-Raten: 3–5 % der hochrelevanten Zielgruppen über 3 Jahre.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- 2. GLOBALE TRENDS -->
+<section id="trends">
+  <div class="section-label reveal">02 — Globale Trends</div>
+  <h2 class="reveal">Fünf Mega-Trends als<br><em>Rückenwind</em></h2>
+  <p class="section-intro reveal reveal-delay-1">Der Schröpfmaster profitiert von konvergierenden Wachstumsmärkten. Das schnellste Segment — elektrische Schröpfgeräte — wächst mit 15 % CAGR.</p>
+
+  <div class="trends-grid">
+    <div class="trend-card reveal reveal-delay-1">
+      <div class="trend-icon">🏃</div>
+      <div class="trend-cagr">9,5%</div>
+      <div class="trend-market">Sport Recovery Tech · $10,5 Mrd. bis 2033</div>
+      <div class="trend-name">Sport Recovery</div>
+      <div class="trend-source">FutureDataStats 2025</div>
+    </div>
+    <div class="trend-card reveal reveal-delay-2">
+      <div class="trend-icon">🌿</div>
+      <div class="trend-cagr">15%</div>
+      <div class="trend-market">Elektrische Schröpfgeräte · $500 Mio. bis 2033</div>
+      <div class="trend-name">Elektrisches Cupping</div>
+      <div class="trend-source">Data Insights Market 2025</div>
+    </div>
+    <div class="trend-card reveal reveal-delay-3">
+      <div class="trend-icon">🧬</div>
+      <div class="trend-cagr">16,5%</div>
+      <div class="trend-market">Biohacking · $24–25 Mrd. (2024)</div>
+      <div class="trend-name">Biohacking & Recovery</div>
+      <div class="trend-source">Grand View Research 2025</div>
+    </div>
+    <div class="trend-card reveal reveal-delay-1">
+      <div class="trend-icon">🏨</div>
+      <div class="trend-cagr">13–16%</div>
+      <div class="trend-market">Medical Spa · $19–22 Mrd. (2024)</div>
+      <div class="trend-name">Medical Spa & Wellness</div>
+      <div class="trend-source">Grand View Research / Precedence Research</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- 3. ZIELGRUPPEN -->
+<section id="zielgruppen">
+  <div class="section-label reveal">03 — Zielgruppenanalyse</div>
+  <h2 class="reveal">Drei Kernzielgruppen<br>mit <em>höchstem Potenzial</em></h2>
+  <p class="section-intro reveal reveal-delay-1">Aus acht analysierten Segmenten kristallisieren sich drei Kernzielgruppen mit der besten Kombination aus Marktgröße, Kaufbereitschaft und strategischer Passung heraus.</p>
+
+  <div class="audience-grid">
+    <div class="audience-card priority-1 reveal">
+      <div class="priority-badge p1">Priorität 1</div>
+      <div class="audience-title">Wellnesshotels & Medical Spas</div>
+      <div class="audience-meta">
+        <div class="audience-row"><span class="audience-key">Markt DACH</span><span class="audience-val">1.200–2.000</span></div>
+        <div class="audience-row"><span class="audience-key">Behandlungspreis</span><span class="audience-val">80–150 €</span></div>
+        <div class="audience-row"><span class="audience-key">Investitionsbereitschaft</span><span class="audience-val">Hoch</span></div>
+        <div class="audience-row"><span class="audience-key">CAGR Markt</span><span class="audience-val">13–16 %</span></div>
+      </div>
+      <div class="audience-motivation">„Höchste Marge, stärkster Imageeffekt, geringes Evidenzrisiko. Schröpfmaster als Signature Treatment positionierbar."</div>
+    </div>
+    <div class="audience-card priority-2 reveal reveal-delay-1">
+      <div class="priority-badge p2">Priorität 2</div>
+      <div class="audience-title">Physiotherapeuten mit Selbstzahler-Fokus</div>
+      <div class="audience-meta">
+        <div class="audience-row"><span class="audience-key">Praxen DACH</span><span class="audience-val">48.000–58.000</span></div>
+        <div class="audience-row"><span class="audience-key">Behandlungspreis</span><span class="audience-val">60–120 €</span></div>
+        <div class="audience-row"><span class="audience-key">Selbstzahler-Quote DE</span><span class="audience-val">82,8 %</span></div>
+        <div class="audience-row"><span class="audience-key">Break-even</span><span class="audience-val">&lt; 21 Tage</span></div>
+      </div>
+      <div class="audience-motivation">„Größtes Volumen. Fachkräftemangel schafft Gerätebedarf. Starke ROI-Argumentation. Leasing ab ~139 €/Monat senkt Barriere."</div>
+    </div>
+    <div class="audience-card priority-3 reveal reveal-delay-2">
+      <div class="priority-badge p3">Priorität 3</div>
+      <div class="audience-title">Heilpraktiker & Sporttherapeuten</div>
+      <div class="audience-meta">
+        <div class="audience-row"><span class="audience-key">Heilpraktiker DE</span><span class="audience-val">31.000–47.000</span></div>
+        <div class="audience-row"><span class="audience-key">Behandlungspreis</span><span class="audience-val">89–199 €</span></div>
+        <div class="audience-row"><span class="audience-key">Sporttherapie-Zentren</span><span class="audience-val">500–1.000</span></div>
+        <div class="audience-row"><span class="audience-key">Recovery CAGR</span><span class="audience-val">9,5 %</span></div>
+      </div>
+      <div class="audience-motivation">„Schröpfen ist Kernkompetenz der Heilpraktiker. Sporttherapeuten profitieren vom Recovery-Boom und hoher Athleten-Zahlungsbereitschaft."</div>
+    </div>
+    <!-- Additional segments compact -->
+    <div class="audience-card reveal" style="background: var(--paper-warm);">
+      <div class="audience-rank">Segment 4</div>
+      <div class="audience-title" style="font-size: 1.1rem;">Heilmasseure (AT)</div>
+      <div class="audience-meta">
+        <div class="audience-row"><span class="audience-key">Anzahl</span><span class="audience-val">~2.970</span></div>
+        <div class="audience-row"><span class="audience-key">Preis</span><span class="audience-val">50–90 €</span></div>
+        <div class="audience-row"><span class="audience-key">Budget</span><span class="audience-val">Mittel (EPU)</span></div>
+      </div>
+    </div>
+    <div class="audience-card reveal reveal-delay-1" style="background: var(--paper-warm);">
+      <div class="audience-rank">Segment 5</div>
+      <div class="audience-title" style="font-size: 1.1rem;">Osteopathen</div>
+      <div class="audience-meta">
+        <div class="audience-row"><span class="audience-key">Anzahl DACH</span><span class="audience-val">2.000–3.000</span></div>
+        <div class="audience-row"><span class="audience-key">Preis</span><span class="audience-val">80–150 €</span></div>
+        <div class="audience-row"><span class="audience-key">Faszien-Affinität</span><span class="audience-val">Sehr hoch</span></div>
+      </div>
+    </div>
+    <div class="audience-card reveal reveal-delay-2" style="background: var(--paper-warm);">
+      <div class="audience-rank">Segment 6</div>
+      <div class="audience-title" style="font-size: 1.1rem;">Kosmetikstudios</div>
+      <div class="audience-meta">
+        <div class="audience-row"><span class="audience-key">Anzahl DACH</span><span class="audience-val">26.000–43.000</span></div>
+        <div class="audience-row"><span class="audience-key">Preis</span><span class="audience-val">40–80 €</span></div>
+        <div class="audience-row"><span class="audience-key">Budget</span><span class="audience-val">Niedrig</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- 4. WETTBEWERB -->
+<section id="wettbewerb">
+  <div class="section-label reveal">04 — Wettbewerbsanalyse</div>
+  <h2 class="reveal">Strategische Lücke bei <em>5.000 €</em></h2>
+  <p class="section-intro reveal reveal-delay-1">Der Schröpfmaster besetzt eine unbesetzte Preiszone zwischen Budget-China-Geräten (200–2.500 €) und Premium-Systemen wie LPG Endermologie (40.000 €).</p>
+
+  <div class="comp-tabs reveal" id="compTabs">
+    <button class="comp-tab active" data-table="vakuum">Schröpf / Vakuum</button>
+    <button class="comp-tab" data-table="stosswelle">Stoßwellentherapie</button>
+    <button class="comp-tab" data-table="laser">Laser & Ultraschall</button>
+    <button class="comp-tab" data-table="recovery">Recovery & Faszien</button>
+  </div>
+
+  <div class="comp-table-wrap reveal">
+    <!-- Vakuum Table -->
+    <table id="table-vakuum">
+      <thead>
+        <tr><th>Gerät</th><th>Hersteller</th><th>Preis</th><th>Technologie</th><th>Zielgruppe</th><th>Typ</th></tr>
+      </thead>
+      <tbody>
+        <tr class="highlight-row">
+          <td>⭐ Schröpfmaster</td>
+          <td>Schröpfmaster (AT)</td>
+          <td><span class="price-tag">~5.000 €</span></td>
+          <td>Vakuum + Pulsation</td>
+          <td>Physio, Spa, Sport</td>
+          <td><span class="tag tag-direct">Eigenes Produkt</span></td>
+        </tr>
+        <tr>
+          <td>LPG Cellu M6 Infinity</td>
+          <td>LPG Group (FR)</td>
+          <td><span class="price-tag">~40.000 €</span></td>
+          <td>Motorisierte Rolle + Vakuum + MPF</td>
+          <td>Ästhetik-Kliniken, Spas</td>
+          <td><span class="tag tag-indirect">Andere Kategorie</span></td>
+        </tr>
+        <tr>
+          <td>ICOONE Laser Med</td>
+          <td>i-Tech Industries (IT)</td>
+          <td><span class="price-tag">20.000–38.000 €</span></td>
+          <td>Roboderm® + 915nm Laser + LED</td>
+          <td>Medizin, Ästhetik, Reha</td>
+          <td><span class="tag tag-indirect">Andere Kategorie</span></td>
+        </tr>
+        <tr>
+          <td>Starvac SP2</td>
+          <td>Starvac Group (FR)</td>
+          <td><span class="price-tag">3.000–5.000 €</span></td>
+          <td>Vakuum + Roller, 35 Programme</td>
+          <td>Schönheitssalons, Physio</td>
+          <td><span class="tag tag-direct">Direktkonkurrenz</span></td>
+        </tr>
+        <tr>
+          <td>MediCupping MC-600</td>
+          <td>ACE Massage Cupping (USA)</td>
+          <td><span class="price-tag">250–550 €</span></td>
+          <td>Elektrische Vakuumpumpe</td>
+          <td>Massagetherapeuten</td>
+          <td><span class="tag tag-budget">Budget-Segment</span></td>
+        </tr>
+        <tr>
+          <td>China-Klone (Alibaba)</td>
+          <td>Diverse (CN)</td>
+          <td><span class="price-tag">150–2.500 USD</span></td>
+          <td>Vakuum, teils Vibration, Wärme</td>
+          <td>Salons, Low-Cost</td>
+          <td><span class="tag tag-budget">Asiatische Konkurrenz</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Stosswelle Table (hidden) -->
+    <table id="table-stosswelle" style="display:none;">
+      <thead>
+        <tr><th>Gerät</th><th>Hersteller</th><th>Preis</th><th>Technologie</th><th>Zielgruppe</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Storz Masterpuls ONE</td>
+          <td>Storz Medical (CH)</td>
+          <td><span class="price-tag">~3.990 €</span></td>
+          <td>Radiale Stoßwelle (pneumatisch)</td>
+          <td>Physio, Sportmedizin</td>
+        </tr>
+        <tr>
+          <td>Zimmer enPuls 2.0</td>
+          <td>Zimmer MedizinSysteme (DE)</td>
+          <td><span class="price-tag">7.000–12.000 €</span></td>
+          <td>Elektromagnetische Stoßwelle</td>
+          <td>Physio, Rehakliniken</td>
+        </tr>
+        <tr>
+          <td>BTL-6000 RSWT Easy</td>
+          <td>BTL Industries (CZ)</td>
+          <td><span class="price-tag">~9.500 €</span></td>
+          <td>Radiale Stoßwelle (pneumatisch)</td>
+          <td>Physiotherapie</td>
+        </tr>
+        <tr>
+          <td>Gymna ShockMaster 300</td>
+          <td>Gymna / Enovis (BE)</td>
+          <td><span class="price-tag">7.000–10.000 €</span></td>
+          <td>Radiale Stoßwelle + pGTS-Software</td>
+          <td>Physio, Rehazentren</td>
+        </tr>
+        <tr>
+          <td>EMS DolorClast</td>
+          <td>EMS (CH)</td>
+          <td><span class="price-tag">13.000–15.000 €</span></td>
+          <td>Radiale Stoßwelle (Original-Erfinder)</td>
+          <td>Physio, Sportmedizin, Orthopädie</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Laser Table (hidden) -->
+    <table id="table-laser" style="display:none;">
+      <thead>
+        <tr><th>Gerät</th><th>Hersteller</th><th>Preis</th><th>Technologie</th><th>Zielgruppe</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>BTL-4000 Laser</td>
+          <td>BTL Industries (CZ)</td>
+          <td><span class="price-tag">2.000–5.000 €</span></td>
+          <td>Low-Level-Laser (LLLT)</td>
+          <td>Physio, kleine Praxen</td>
+        </tr>
+        <tr>
+          <td>K-Laser Cube 4</td>
+          <td>Eltech / INDIBA (IT)</td>
+          <td><span class="price-tag">~22.000 €</span></td>
+          <td>Class-IV-Laser, 4 Wellenlängen</td>
+          <td>Sportmedizin, Reha</td>
+        </tr>
+        <tr>
+          <td>LightForce FXi</td>
+          <td>LiteCure / Enovis (USA)</td>
+          <td><span class="price-tag">16.000–20.000 €</span></td>
+          <td>Class-IV-Laser, 15 Watt</td>
+          <td>Sportmedizin, Orthopädie</td>
+        </tr>
+        <tr>
+          <td>Enraf-Nonius Sonopuls 492</td>
+          <td>Enovis (NL)</td>
+          <td><span class="price-tag">~4.295 €</span></td>
+          <td>Ultraschall + Elektrotherapie Kombi</td>
+          <td>Physiotherapie, Reha</td>
+        </tr>
+        <tr>
+          <td>Chattanooga Intelect Legend XT</td>
+          <td>Enovis (USA)</td>
+          <td><span class="price-tag">2.700–3.100 €</span></td>
+          <td>Elektrotherapie + Ultraschall Kombi</td>
+          <td>Physiotherapie</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Recovery Table (hidden) -->
+    <table id="table-recovery" style="display:none;">
+      <thead>
+        <tr><th>Gerät</th><th>Hersteller</th><th>Preis</th><th>Technologie</th><th>Zielgruppe</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Theragun PRO Plus G6</td>
+          <td>Therabody (USA)</td>
+          <td><span class="price-tag">~650 €</span></td>
+          <td>Perkussion + IR-LED + Wärme/Kälte</td>
+          <td>Athleten, Physio, Spa</td>
+        </tr>
+        <tr>
+          <td>Hyperice Hypervolt 2 Pro</td>
+          <td>Hyperice (USA)</td>
+          <td><span class="price-tag">~329 €</span></td>
+          <td>Perkussions-Technologie</td>
+          <td>Athleten, Consumer</td>
+        </tr>
+        <tr>
+          <td>Graston Technique Set</td>
+          <td>Graston (USA)</td>
+          <td><span class="price-tag">~2.600 € (6er)</span></td>
+          <td>IASTM Edelstahl-Instrumente</td>
+          <td>Physio, Sporttherapie</td>
+        </tr>
+        <tr>
+          <td>HawkGrips Platinum</td>
+          <td>HawkGrips (USA)</td>
+          <td><span class="price-tag">2.500–3.400 €</span></td>
+          <td>IASTM-Tools (Faszienbehandlung)</td>
+          <td>Physio, Sporttherapie</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- 5. ROI KALKULATOR -->
+<section id="roi" style="padding-top: 0; padding-bottom: 0;">
+  <div class="roi-section">
+    <div class="section-label">05 — ROI-Analyse</div>
+    <h2>Amortisation in <em style="color: var(--accent);">6–25 Arbeitstagen</em></h2>
+    <div class="roi-grid">
+      <div class="roi-controls">
+        <div>
+          <div class="roi-label">Anwender-Typ</div>
+          <select class="roi-select" id="roiType" onchange="calcROI()">
+            <option value="physio">Physiotherapiepraxis</option>
+            <option value="massage">Massagepraxis</option>
+            <option value="hotel">Wellnesshotel / Spa</option>
+          </select>
+        </div>
+        <div>
+          <div class="roi-label">Behandlungspreis: <span id="priceDisplay">90 €</span></div>
+          <input type="range" id="roiPrice" min="40" max="180" value="90" step="5" oninput="calcROI()">
+          <div class="range-labels"><span>40 €</span><span>180 €</span></div>
+        </div>
+        <div>
+          <div class="roi-label">Behandlungen pro Tag: <span id="treatDisplay">6</span></div>
+          <input type="range" id="roiTreat" min="2" max="12" value="6" step="1" oninput="calcROI()">
+          <div class="range-labels"><span>2</span><span>12</span></div>
+        </div>
+        <div>
+          <div class="roi-label">Arbeitstage pro Monat: <span id="daysDisplay">22</span></div>
+          <input type="range" id="roiDays" min="10" max="26" value="22" step="1" oninput="calcROI()">
+          <div class="range-labels"><span>10</span><span>26</span></div>
+        </div>
+      </div>
+      <div class="roi-results">
+        <div class="roi-result-card">
+          <div class="roi-result-num" id="monthlyResult">11.880 €</div>
+          <div class="roi-result-label">MONATSUMSATZ (nur Schröpfen)</div>
+        </div>
+        <div class="roi-result-card">
+          <div class="roi-result-num" id="yearlyResult">142.560 €</div>
+          <div class="roi-result-label">JAHRESUMSATZ (nur Schröpfen)</div>
+        </div>
+        <div class="roi-result-card breakeven">
+          <div class="roi-result-num" id="breakevenResult">~10 Tage</div>
+          <div class="roi-result-label">BREAK-EVEN (bei 5.000 € Gerätekosten)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. SWOT -->
+<section id="swot">
+  <div class="section-label reveal">06 — SWOT-Analyse</div>
+  <h2 class="reveal">Stärken überwiegen —<br><em>klarer Handlungsbedarf</em></h2>
+
+  <div class="swot-grid reveal">
+    <div class="swot-cell strengths">
+      <div class="swot-label">💪 Stärken</div>
+      <div class="swot-icon">✅</div>
+      <ul class="swot-items">
+        <li>Strategische Preis-Lücke (5.000 €) zwischen Budget (200–2.500 €) und Premium (15.000–40.000 €)</li>
+        <li>Keine laufenden Verbrauchsmaterialkosten (vs. Stoßwelle, Laser)</li>
+        <li>Mehrere Zielgruppen adressierbar (Therapie + Wellness + Sport)</li>
+        <li>Kulturelle Resonanz und steigende Bekanntheit von Schröpftherapie</li>
+        <li>Extrem schnelle Amortisation (6–25 Arbeitstage)</li>
+        <li>Schulungsmodell als Zusatzumsatz und Lock-in-Hebel</li>
+      </ul>
+    </div>
+    <div class="swot-cell weaknesses">
+      <div class="swot-label">⚠️ Schwächen</div>
+      <div class="swot-icon">⚠️</div>
+      <ul class="swot-items">
+        <li>Keine etablierte Marke im DACH-Raum gegenüber Storz, BTL, LPG</li>
+        <li>Begrenzte gerätespezifische klinische Evidenz</li>
+        <li>Abhängigkeit von Marktbildung und Methodenedukation</li>
+        <li>Einzelprodukt ohne Ökosystem (noch kein Zubehör, Verbrauchsmaterial, App)</li>
+        <li>82,5 % EPU-Anteil bei Masseuren = limitiertes Budget</li>
+      </ul>
+    </div>
+    <div class="swot-cell opportunities">
+      <div class="swot-label">🚀 Chancen</div>
+      <div class="swot-icon">🚀</div>
+      <ul class="swot-items">
+        <li>Elektrisches Schröpfen wächst mit 15 % CAGR (schnellstes Segment)</li>
+        <li>Kein dominanter Wettbewerber bei 5.000 € im Markt</li>
+        <li>Wellness-Wirtschaft bei 6,8 Bio. USD mit 7,9 % Wachstum (GWI 2025)</li>
+        <li>Zertifiziertes Schulungssystem als Burggraben (LPG-Modell)</li>
+        <li>Sport-Recovery-Boom: 9,5 % CAGR, 10,5 Mrd. USD bis 2033</li>
+        <li>Fachkräftemangel fördert Geräte-Nachfrage in Praxen</li>
+      </ul>
+    </div>
+    <div class="swot-cell threats">
+      <div class="swot-label">⚡ Risiken</div>
+      <div class="swot-icon">⚡</div>
+      <ul class="swot-items">
+        <li>Chinesische Budget-Konkurrenz ab 150 USD auf Alibaba</li>
+        <li>Gemischte Evidenzlage (Placebo-Problem; JOSPT Open 2025)</li>
+        <li>Budget-Wettbewerb mit Stoßwelle und Laser in Praxen</li>
+        <li>EU-MDR-Compliance-Aufwand bei therapeutischen Claims</li>
+        <li>Geringe Methodenbekanntheit erfordert aktive Marktbildung</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- 7. STRATEGIE -->
+<section id="strategie">
+  <div class="section-label reveal">07 — Positionierungsstrategie</div>
+  <h2 class="reveal">Fünf Optionen —<br><em>eine klare Empfehlung</em></h2>
+  <p class="section-intro reveal reveal-delay-1">Klicken Sie auf eine Option, um Vor- und Nachteile zu sehen. Die Bewertung basiert auf Marktgröße, Wettbewerbsintensität und strategischem Fit.</p>
+
+  <div class="strategy-options reveal" id="strategyOptions">
+    <div class="strategy-option open" data-id="1">
+      <div class="strategy-header" onclick="toggleStrategy(this)">
+        <div class="strategy-rank r1">5</div>
+        <div class="strategy-title">Methode + Ausbildungssystem ⭐ Empfohlen</div>
+        <div class="strategy-score">⭐⭐⭐⭐⭐</div>
+        <div class="strategy-chevron">▾</div>
+      </div>
+      <div class="strategy-body">
+        <p style="font-size: 0.9rem; color: var(--ink-soft); line-height: 1.7;">Das LPG-bewährte Flywheel: Das Gerät legitimiert die Methode, die Methode erfordert die Ausbildung, die Ausbildung verkauft das Gerät. Stufiges Curriculum: Basic (300 €), Advanced (500 €), Master (800 €). Schulungsumsatz-Potenzial: <strong>750.000–1,5 Mio. € jährlich</strong> DACH-weit bei 5 % Marktdurchdringung.</p>
+        <div class="strategy-pros-cons">
+          <div class="pc-block pro">
+            <h4>Vorteile</h4>
+            <ul class="pc-list">
+              <li>Stärkster Burggraben und Lock-in-Effekt</li>
+              <li>Wiederkehrende Schulungserlöse</li>
+              <li>Markenstärke durch Zertifizierung</li>
+              <li>Netzwerkeffekte über Alumni-Community</li>
+              <li>Bewährt: LPG 39 Jahre, Therabody 12.000+ Alumni</li>
+            </ul>
+          </div>
+          <div class="pc-block con">
+            <h4>Herausforderungen</h4>
+            <ul class="pc-list">
+              <li>Höhere initiale Aufbaukosten</li>
+              <li>Schulungsteam erforderlich</li>
+              <li>Verbandsakkreditierung braucht Zeit</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="strategy-option" data-id="2">
+      <div class="strategy-header" onclick="toggleStrategy(this)">
+        <div class="strategy-rank r2">3</div>
+        <div class="strategy-title">Premium Spa Treatment für Wellnesshotels</div>
+        <div class="strategy-score">⭐⭐⭐⭐⭐</div>
+        <div class="strategy-chevron">▾</div>
+      </div>
+      <div class="strategy-body">
+        <p style="font-size: 0.9rem; color: var(--ink-soft); line-height: 1.7;">Hotels suchen aktiv nach differenzierenden Signature Treatments. Behandlungspreise 80–150 € bei minimalem Geräteeinsatz und starkem Storytelling-Potenzial. Medical Spa wächst mit 13–16 % CAGR.</p>
+        <div class="strategy-pros-cons">
+          <div class="pc-block pro">
+            <h4>Vorteile</h4>
+            <ul class="pc-list">
+              <li>Höchste Behandlungspreise (80–150 €)</li>
+              <li>Niedrige Preissensitivität</li>
+              <li>Kein Evidenzdruck wie im med. Bereich</li>
+              <li>Starkes Storytelling-/Marketingpotenzial</li>
+            </ul>
+          </div>
+          <div class="pc-block con">
+            <h4>Herausforderungen</h4>
+            <ul class="pc-list">
+              <li>Relativ kleiner Markt (1.200–2.000 Hotels DACH)</li>
+              <li>Längere B2B-Verkaufszyklen</li>
+              <li>Hohe Design-/Markenanforderungen</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="strategy-option" data-id="3">
+      <div class="strategy-header" onclick="toggleStrategy(this)">
+        <div class="strategy-rank r3">2</div>
+        <div class="strategy-title">Spezialgerät für Sport Recovery</div>
+        <div class="strategy-score">⭐⭐⭐⭐</div>
+        <div class="strategy-chevron">▾</div>
+      </div>
+      <div class="strategy-body">
+        <p style="font-size: 0.9rem; color: var(--ink-soft); line-height: 1.7;">Der Michael-Phelps-Effekt hat Cupping fest im Bewusstsein von Profisportlern verankert. Sport-Recovery-Markt: 10,5 Mrd. USD bis 2033. 15 % der Sport-Rehabilitationszentren nutzen bereits Cupping.</p>
+        <div class="strategy-pros-cons">
+          <div class="pc-block pro">
+            <h4>Vorteile</h4>
+            <ul class="pc-list">
+              <li>Stark wachsender Markt (9,5 % CAGR)</li>
+              <li>Hohe Zahlungsbereitschaft von Athleten</li>
+              <li>Emotionales Marketing über Sportler-Testimonials</li>
+              <li>Global skalierbar</li>
+            </ul>
+          </div>
+          <div class="pc-block con">
+            <h4>Herausforderungen</h4>
+            <ul class="pc-list">
+              <li>Starke Konkurrenz durch Therabody/Hyperice</li>
+              <li>Evidenz für sportliche Leistungssteigerung unklar</li>
+              <li>Als alleinige Positionierung zu eng</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="strategy-option" data-id="4">
+      <div class="strategy-header" onclick="toggleStrategy(this)">
+        <div class="strategy-rank r4">1</div>
+        <div class="strategy-title">High-End Schröpfgerät für Therapeuten</div>
+        <div class="strategy-score">⭐⭐⭐⭐</div>
+        <div class="strategy-chevron">▾</div>
+      </div>
+      <div class="strategy-body">
+        <p style="font-size: 0.9rem; color: var(--ink-soft); line-height: 1.7;">Größtes Marktvolumen (48.000–58.000 Physiotherapiepraxen DACH), klare Zielgruppe, bestehende Vertriebskanäle. Leasing ab ~139 €/Monat senkt Einstiegsbarriere entscheidend.</p>
+        <div class="strategy-pros-cons">
+          <div class="pc-block pro">
+            <h4>Vorteile</h4>
+            <ul class="pc-list">
+              <li>Volumenstärkster Markt DACH</li>
+              <li>Klare Vertriebskanäle (Medizintechnik-Händler)</li>
+              <li>Starke ROI-Argumentation (~21 Tage Break-even)</li>
+            </ul>
+          </div>
+          <div class="pc-block con">
+            <h4>Herausforderungen</h4>
+            <ul class="pc-list">
+              <li>Direkte Budget-Konkurrenz mit Stoßwelle/Laser</li>
+              <li>Hohe Evidenzansprüche</li>
+              <li>82,5 % EPU-Anteil = Budgetlimits</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="strategy-option" data-id="5">
+      <div class="strategy-header" onclick="toggleStrategy(this)">
+        <div class="strategy-rank r5">4</div>
+        <div class="strategy-title">Therapieinnovation für Schmerzbehandlung</div>
+        <div class="strategy-score">⭐⭐⭐</div>
+        <div class="strategy-chevron">▾</div>
+      </div>
+      <div class="strategy-body">
+        <p style="font-size: 0.9rem; color: var(--ink-soft); line-height: 1.7;">Evidenz für Schmerzreduktion vorhanden (SMD=-1,17 vs. Standardbehandlung), aber langwieriger Weg: EU-MDR-Compliance, klinische Studien, Erstattungsanträge. Langfristig wertvoll.</p>
+        <div class="strategy-pros-cons">
+          <div class="pc-block pro">
+            <h4>Vorteile</h4>
+            <ul class="pc-list">
+              <li>Direkter medizinischer Nutzen belegbar</li>
+              <li>Abgrenzung von Wellness-Konnotation</li>
+              <li>Potenzielle Erstattungsfähigkeit</li>
+            </ul>
+          </div>
+          <div class="pc-block con">
+            <h4>Herausforderungen</h4>
+            <ul class="pc-list">
+              <li>Höchste regulatorische Anforderungen (EU MDR)</li>
+              <li>Stoßwelle hat deutlich bessere Studienlage</li>
+              <li>Sehr ressourcenintensiv, langer Zeithorizont</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- 8. EMPFEHLUNGEN -->
+<section id="empfehlungen">
+  <div class="section-label reveal">08 — Strategische Empfehlungen</div>
+  <h2 class="reveal">Der Fahrplan:<br><em>Drei Säulen, ein System</em></h2>
+  <p class="section-intro reveal reveal-delay-1">Die optimale Strategie kombiniert Gerät + Methode + Ausbildung als integriertes System. Dieser Flywheel-Effekt ist der einzige nachhaltig verteidigbare Wettbewerbsvorteil.</p>
+
+  <div class="rec-grid reveal">
+    <div class="rec-card featured">
+      <div class="rec-num">Hebel #1 — Sofort starten</div>
+      <div class="rec-title">Zertifiziertes Schröpfmaster-Schulungssystem aufbauen</div>
+      <div class="rec-body">Drei- bis vierstufiges Curriculum: Online-Theorie + Präsenz-Praxis, akkreditiert bei Physio Austria, IFK, ZVK. Jede Schulung ist gleichzeitig ein Vertriebsevent. Das Modell schafft Lock-in, wiederkehrende Erlöse und organische Mund-zu-Mund-Propaganda.</div>
+      <div class="rec-metrics">
+        <div>
+          <div class="rec-metric-val">750K–1,5M€</div>
+          <div class="rec-metric-label">Jahres-Schulungspotenzial DACH</div>
+        </div>
+        <div>
+          <div class="rec-metric-val">300–800€</div>
+          <div class="rec-metric-label">Pro Kurs-Level</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rec-card reveal">
+      <div class="rec-num">Hebel #2 — Flagship-Kanal</div>
+      <div class="rec-title">Leuchtturm-Wellnesshotels als Referenzkunden gewinnen</div>
+      <div class="rec-body">10–15 renommierte Wellnesshotels in Österreich (Thermenregion Steiermark, Tirol, Salzburg) als Referenzkunden mit exklusiven „Schröpfmaster Signature Treatment"-Paketen gewinnen. Deren Erfolgsgeschichten sind das wichtigste Marketing-Asset.</div>
+      <div class="rec-metrics">
+        <div>
+          <div class="rec-metric-val" style="color: var(--teal);">80–150€</div>
+          <div class="rec-metric-label">Behandlungspreis (Hotel)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rec-card reveal reveal-delay-1">
+      <div class="rec-num">Hebel #3 — Zugangshürde senken</div>
+      <div class="rec-title">Leasing- und Mietmodelle für Einzelunternehmer</div>
+      <div class="rec-body">Bei 82,5 % EPU-Anteil ist das Budget der kritische Hebel. Leasing ab ~139 €/Monat (36 Monate) oder Mietkauf senkt die Entscheidungsbarriere. ROI-Kalkulator als Verkaufstool einsetzen: Break-even in &lt; 21 Arbeitstagen.</div>
+      <div class="rec-metrics">
+        <div>
+          <div class="rec-metric-val" style="color: var(--teal);">139€</div>
+          <div class="rec-metric-label">Ab / Monat (Leasing 36M)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rec-card reveal reveal-delay-2">
+      <div class="rec-num">Hebel #4 — Evidenz aufbauen</div>
+      <div class="rec-title">Klinische Studie mit dem Schröpfmaster-Gerät initiieren</div>
+      <div class="rec-body">Eine RCT mit dem Gerät (vs. manuelle Cups) an einer DACH-Universität stärkt die Evidenz entscheidend und differenziert von generischem Cupping. Wirkmechanismus „myofasziale Dekompression" (nicht TCM) betonen für westliche Zielgruppe.</div>
+    </div>
+
+    <div class="rec-card reveal">
+      <div class="rec-num">Hebel #5 — Messen & Vertrieb</div>
+      <div class="rec-title">DACH-Fachmessen als primäre Lead-Generierung</div>
+      <div class="rec-body">MEDICA Düsseldorf, TheraPro Stuttgart, therapie Leipzig, FIBO (Recovery), Spa & Wellness Messen. Live-Demos + ROI-Rechner + Schulungsprogramm als integrierter Messe-Auftritt. Medizintechnik-Händler (Sport-Tec, Medizina.de) als Multiplikatoren.</div>
+    </div>
+
+    <div class="rec-card reveal reveal-delay-1">
+      <div class="rec-num">Hebel #6 — Mittelfristig</div>
+      <div class="rec-title">Internationale Expansion nach EU-MDR-Zertifizierung</div>
+      <div class="rec-body">EU-MDR öffnet den gesamten EU-Markt. USA (Medical Spa: 6,9 Mrd. USD), Südkorea (Beauty-Devices CAGR 13,8 %) und Mittlerer Osten (Medical Tourismus) bieten das größte langfristige Potenzial. Ab Jahr 2–3 nach DACH-Etablierung.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Schröpfmaster — Markt- & Strategieanalyse 2026</strong></p>
+  <p style="margin-top: 8px;">Quellen: WKO 2024/2025 · Statistik Austria · GÖG MTD-Prognose · Physio Austria · Eckdatenstudie BGW 2024 · Global Wellness Institute 2025 · Grand View Research · Data Bridge Market Research · Dataintelo · FutureDataStats · PubMed Central · Insights10</p>
+  <p style="margin-top: 8px;">Analyse erstellt mit Claude (Anthropic) · Deep Research Brief 2026</p>
+</footer>
+
+<script>
+  // ─── SCROLL REVEAL ───
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => io.observe(el));
+
+  // ─── COMPETITION TABS ───
+  document.querySelectorAll('.comp-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.comp-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('[id^="table-"]').forEach(t => t.style.display = 'none');
+      tab.classList.add('active');
+      document.getElementById('table-' + tab.dataset.table).style.display = 'table';
+    });
+  });
+
+  // ─── STRATEGY ACCORDION ───
+  function toggleStrategy(header) {
+    const option = header.parentElement;
+    const isOpen = option.classList.contains('open');
+    document.querySelectorAll('.strategy-option').forEach(o => o.classList.remove('open'));
+    if (!isOpen) option.classList.add('open');
+  }
+
+  // ─── ROI CALCULATOR ───
+  function calcROI() {
+    const price = +document.getElementById('roiPrice').value;
+    const treats = +document.getElementById('roiTreat').value;
+    const days = +document.getElementById('roiDays').value;
+    const deviceCost = 5000;
+
+    document.getElementById('priceDisplay').textContent = price + ' €';
+    document.getElementById('treatDisplay').textContent = treats;
+    document.getElementById('daysDisplay').textContent = days;
+
+    const monthly = price * treats * days;
+    const yearly = monthly * 12;
+    const breakEven = Math.ceil(deviceCost / (price * treats));
+
+    document.getElementById('monthlyResult').textContent = monthly.toLocaleString('de-AT') + ' €';
+    document.getElementById('yearlyResult').textContent = yearly.toLocaleString('de-AT') + ' €';
+    document.getElementById('breakevenResult').textContent = '~' + breakEven + ' Tage';
+  }
+  calcROI();
+
+  // ─── NAV SCROLL STYLE ───
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 80) {
+      nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.07)';
+    } else {
+      nav.style.boxShadow = 'none';
+    }
+  });
+
+  // ─── FUNNEL ANIMATION ───
+  const funnelObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.funnel-bar').forEach(bar => {
+          bar.style.width = bar.classList.contains('tam') ? '100%' :
+                             bar.classList.contains('sam') ? '58%' : '4%';
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.funnel-bars').forEach(el => funnelObs.observe(el));
+  document.querySelectorAll('.funnel-bar').forEach(bar => bar.style.width = '0%');
+</script>
+
+</body>
+</html>
